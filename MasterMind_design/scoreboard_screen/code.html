@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mastermind Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1919e6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body>
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#242447] px-4 md:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mastermind</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal" href="#">Play Game</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Profile</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4 md:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9393c8] flex border-none bg-[#242447] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#242447] focus:border-none h-full placeholder:text-[#9393c8] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2OXfXn31i9xdNg-fbm4OcZmtqFsNyDNp0cp1lAucVR1JA0BB2LVyaemcBEnHN8U-RScJfsIC4DyTaeU3mvDnPWHkbwsFmhmWKEuZIvcFsUWItU9gbYpiVAQX9ymNh129_8HkuOMX8U0vU5VTdUx9H4Znn-rpRtEGiJqtIDqwl0sS2U85p50k9xCsx34d8ZHqPYa2PAqiBnvaIb0hlix-y8QEjJM_eX3ZwTg6q3bW7wBpjZmi9vyLZVS-ZELrT7wcp-V279BuH_hFN");'></div>
+</div>
+</header>
+<div class="flex flex-col p-4 gap-4">
+<div class="flex flex-wrap justify-between items-center gap-4">
+<p class="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Mastermind Leaderboard</p>
+<div class="flex gap-3 overflow-x-auto">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4">
+<p class="text-white text-sm font-medium leading-normal">All-Time</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#242447] px-4 cursor-pointer hover:bg-primary/80 transition-colors">
+<p class="text-white text-sm font-medium leading-normal">This Week</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#242447] px-4 cursor-pointer hover:bg-primary/80 transition-colors">
+<p class="text-white text-sm font-medium leading-normal">Today</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-3 @container">
+<div class="flex overflow-hidden rounded-lg border border-[#343465] bg-[#1a1a32]">
+<table class="flex-1">
+<thead>
+<tr class="bg-[#1a1a32]">
+<th class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 px-4 py-3 text-left text-white text-sm font-medium leading-normal">Rank</th>
+<th class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 px-4 py-3 text-left text-white text-sm font-medium leading-normal">Player</th>
+<th class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 px-4 py-3 text-left text-white text-sm font-medium leading-normal">Score</th>
+<th class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 px-4 py-3 text-left text-white text-sm font-medium leading-normal">Fastest Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t border-t-[#343465] hover:bg-[#242447] transition-colors">
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 h-[72px] px-4 py-2 text-[#FFD700] text-lg font-bold">#1</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 h-[72px] px-4 py-2 text-white font-medium flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZV3bgNYpzX2aqY5HnAdihWze9wH91s1Icils0XMKqYLYo9NVROdBooLctUWZ4S7AXD-Z1ereLvLYOSGLp21EvP5CNl1J3xABDoTQb_jVpNVUmTIdj_4tZsgE0iEJJB2NIpx2tu-cj5tna-xR3xhbdlK0ztIHHXo2rYcVR41oOBuQSm8ImYiTe8gybUiH1M-Su-KNaxGToBkjcrualYb4sivHvcylAbjzOexz9vwPChTKeXWQ8kCGGK4Xadv-StTP59rJRJ-bj1Bsr");'></div>
+                                                Player One
+                                            </td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 h-[72px] px-4 py-2 text-white text-sm font-normal leading-normal">1500</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">2:30</td>
+</tr>
+<tr class="border-t border-t-[#343465] hover:bg-[#242447] transition-colors">
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 h-[72px] px-4 py-2 text-[#C0C0C0] text-lg font-bold">#2</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 h-[72px] px-4 py-2 text-white font-medium flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATFzVTW7zCFFe5AGdQJ4j-hbuN5TZL_1mH9kozS7q1VKqnyyIh4GhDKfXZHJF--1Igh9u97a_VK5xN0YeibRQisDUlBPwRowEDavO5j1OA9twy-IIBB67gQA0c8AHH1HlYIL4bwMeoopcicogWpcOPqVtZ6Nc9r0SAV-fq1Qus8d_xzH3KUVxvpt-oEvB0258Rj4k444uGK10vXCvP8K8QhZNHUpEodDLqlzfYrEogLmVGWIS3YSCTVo4ZalKP7in1yvb3mLHxuUxz");'></div>
+                                                Player Two
+                                            </td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 h-[72px] px-4 py-2 text-white text-sm font-normal leading-normal">1450</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">2:45</td>
+</tr>
+<tr class="border-t border-t-[#343465] hover:bg-[#242447] transition-colors">
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 h-[72px] px-4 py-2 text-[#CD7F32] text-lg font-bold">#3</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 h-[72px] px-4 py-2 text-white font-medium flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9FfsKMSWwIbztxg3NA0LXZaEOjLEKZnv6S5Dwzh3Fi2HQtonj86Xv4RWrJA8DdyhSsG7hA-KdyQTV7EVTNj-yTETpVbDBQJSfdaB_nxpTiO9nPLqvyEZrv7BlZ45JCeWMPkmbrhlZV1hAgH4mjPYiJ8Y1LSqJqBQhz0dvCjL5uO0ocip8K6nkwiChrGVjEFYWj1Py2037YAGVJ1i1bKWfPCmbkXtJ6rFHeDRj18j64biYsXQ5AGGxe7hQCbK5yEMbaEv8ixgh1TkE");'></div>
+                                                Player Three
+                                            </td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 h-[72px] px-4 py-2 text-white text-sm font-normal leading-normal">1400</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">3:00</td>
+</tr>
+<tr class="border-t border-t-[#343465] hover:bg-[#242447] transition-colors">
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">#4</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 h-[72px] px-4 py-2 text-white flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEg9hN4kvqRDxZZ-TNGT-lTaSb3WjWoCPUlhawwnRMBJmfFiSHwA8eiJmOeJNvLHzuhtLD6czbebf4AQGoz9NmVhKjj5cCavdjkM2zWgZUv1SGcdUX-RRXV0Ux_awUxn6XdGo5nmu3PqPix88oMHD5EGx5Ji6XKujqPD_1c0zZHI_KkdLiXiltRY-_2nQerkpQ4_obyo7TO5dcYBWq7uJwjyUrJygz3_vrElHpXPaAEjj74b9GDgodA7T769qMaSMSM3ez6gf46xaA");'></div>
+                                                Player Four
+                                            </td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">1350</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">3:15</td>
+</tr>
+<tr class="border-t border-t-[#343465] hover:bg-[#242447] transition-colors">
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-120 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">#5</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-240 h-[72px] px-4 py-2 text-white flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCh0QQR4FiFzYXaLAIwzj8dTe7GbOalyjmEuU7ldX_DvbqlMhD0YoS8paIG0jnktHWWTTHhTYhJJm66EpcqgriiBYwOV3S3JVLEFCSnaPPus9tv5kAtN0HWVzJ80DiQSMMDYvDiKoCpiqEIzFL7b538Fn64asgA7YGiY7CB0QXjRsnatue-OvXwIl1NZyAg5k_AuPREehHW5jLLH6DXUjGeSNxNttzgLV29efsvnn72XdH9C5HrlJDlVM5UXjKHEKNXLq3p2HuBYEs8");'></div>
+                                                Player Five
+                                            </td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">1300</td>
+<td class="table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">3:30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+                                @container(max-width:480px) {
+                                    .table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-480 {
+                                        display: none;
+                                    }
+                                }
+                                @container(max-width:360px) {
+                                    .table-a09c2948-b445-4d69-af4e-2f9ec1030e36-column-360 {
+                                        display: none;
+                                    }
+                                }
+                            </style>
+</div>
+<div class="flex items-center justify-center p-4">
+<a class="flex size-10 items-center justify-center text-white/50 hover:text-white" href="#">
+<span class="material-symbols-outlined">chevron_left</span>
+</a>
+<a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-white rounded-full bg-primary" href="#">1</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white rounded-full hover:bg-primary/30" href="#">2</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white rounded-full hover:bg-primary/30" href="#">3</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white rounded-full hover:bg-primary/30" href="#">4</a>
+<a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-white rounded-full hover:bg-primary/30" href="#">5</a>
+<a class="flex size-10 items-center justify-center text-white/50 hover:text-white" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
