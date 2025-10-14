@@ -1,0 +1,89 @@
+/* @import "tailwindcss";
+
+:root {
+  --primary: #1919e6;
+  --background-light: #f6f6f8;
+  --background-dark: #111121;
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-SpaceGrotesk: "Space Grotesk", sans-serif;
+  --font-SpaceGrotesk-sans: "Space Grotesk", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background-dark);
+  --color-foreground: var(--background-light);
+  --color-primary: var(--primary);
+  --background: var(--background-dark);
+  --foreground: var(--background-light);
+  --font-sans: var(--font-SpaceGrotesk-sans);
+  --font-display: var(--font-SpaceGrotesk);
+}
+
+body {
+  background: var(--backgroun-dark);
+  color: var(--foreground);
+  font-family: var(--font-SpaceGrotesk);
+} */
+ 
+@import "tailwindcss";
+
+/* 🌗 Thèmes clair/sombre */
+:root {
+  --color-primary: #1919e6;
+  --primary: #1919e6;
+  --color-background: #f6f6f8;
+  --color-text: #111121;
+  --font-SpaceGrotesk: "Space Grotesk", sans-serif;
+  --font-SpaceGrotesk-sans: "Space Grotesk", sans-serif;
+}
+
+
+@theme inline {
+  --color-background: var(--background-dark);
+  --color-foreground: var(--background-light);
+  --color-primary: var(--primary);
+  --background: var(--background-dark);
+  --foreground: var(--background-light);
+  --font-sans: var(--font-SpaceGrotesk-sans);
+  --font-display: var(--font-SpaceGrotesk);
+}
+
+.dark {
+  --color-primary: #1919e6;
+  --color-background: #111121;
+  --color-text: rgb(255 255 255);
+}
+
+/* 🌍 Styles globaux */
+body {
+  font-family: var(--font-SpaceGrotesk);
+  @apply bg-[var(--color-background)] text-[var(--color-text)] antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  @apply text-[#9393c8] hover:text-white transition-colors;
+}
+
+@layer utilities {
+  .perspective {
+    perspective: 1000px;
+  }
+
+  @keyframes flip {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: rotateX(-90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+
+  .animate-flip {
+    animation: flip 0.6s ease-in-out;
+  }
+}

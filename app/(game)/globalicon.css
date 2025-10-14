@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=optional');
+
+.material-symbols-outlined {
+    /* optionnel: réglages par défaut pour Material Symbols */
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+    font-family: "Material Symbols Outlined";
+    line-height: 1;
+  }
