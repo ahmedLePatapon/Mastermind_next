@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 
 type Player = {
@@ -36,12 +37,12 @@ export default function Leaderboard({ players }: LeaderboardProps) {
                                 {/* RANK */}
                                 <td
                                     className={`h-[72px] px-4 py-2 text-lg font-bold ${player.rank === 1
-                                            ? "text-[#FFD700]"
-                                            : player.rank === 2
-                                                ? "text-[#C0C0C0]"
-                                                : player.rank === 3
-                                                    ? "text-[#CD7F32]"
-                                                    : "text-[#9393c8] text-sm font-normal leading-normal"
+                                        ? "text-[#FFD700]"
+                                        : player.rank === 2
+                                            ? "text-[#C0C0C0]"
+                                            : player.rank === 3
+                                                ? "text-[#CD7F32]"
+                                                : "text-[#9393c8] text-sm font-normal leading-normal"
                                         }`}
                                 >
                                     #{player.rank}

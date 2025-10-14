@@ -2,7 +2,6 @@
 
 import { TimerProvider } from "./TimerContext";
 
-
 export default function GameClientWrapper({
     children,
 }: {

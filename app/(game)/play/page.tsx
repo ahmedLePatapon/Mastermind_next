@@ -1,4 +1,5 @@
 "use client";
+
 import GameBoard, { GuessRow } from "./components/GameBoard";
 import Timer from "./components/Timer";
 import ColorSelector from "./components/ColorSelector";

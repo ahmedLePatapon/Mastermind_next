@@ -1,13 +1,11 @@
 'use client';
+
 import React from "react";
-import { useTimer } from "../TimerContext";
+import { useTimer } from "../play/TimerContext";
 import Link from "next/link";
 
 export default function Header() {
     const { isRunning, toggleTimer, resetTimer } = useTimer();
-    console.log('**********************');
-    console.log('isRunning 1', isRunning);
-    console.log('**********************');
     return (
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#242447] px-10 py-3">
             {/* Logo + Titre */}

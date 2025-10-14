@@ -1,4 +1,5 @@
 'use client';
+
 import React from "react";
 import { useTimer } from "../TimerContext";
 import Link from "next/link";
