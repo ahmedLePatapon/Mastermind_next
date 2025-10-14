@@ -5,6 +5,7 @@ import "@/app/globals.css";
 import '@/app/globalicon.css';
 
 import { Space_Grotesk } from "next/font/google";
+import Footer from "@/components/Footer";
 
 // Import de la police côté serveur
 const spaceGrotesk = Space_Grotesk({
@@ -34,6 +35,7 @@ export default function GameLayout({
                                 </div>
                             </div>
                         </div>
+                        <Footer />
                     </div>
                 </GameClientWrapper>
             </body>
