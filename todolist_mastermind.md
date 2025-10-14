@@ -20,7 +20,7 @@
 
 ## 🎨 Étape 2 — Design & UI
 - [x] Créer un **header/navbar** avec liens (Accueil, Jouer, Scores, Connexion)
-- [ ] Créer un **footer** simple
+- [x] Créer un **footer** simple
 - [x] Mettre en place la **palette de couleurs**
 - [ ] Définir les **composants réutilisables** :
 - [ ] `Button`, `Card`, `Input`, `Modal`, `Alert`
