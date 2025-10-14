@@ -26,7 +26,7 @@
 - [ ] `Button`, `Card`, `Input`, `Modal`, `Alert`
 - [x] `GameBoard` (plateau du Mastermind)
 - [x] `ColorPeg` (pions)
-- [ ] `ScoreList` (tableau des scores)
+- [x] `ScoreList` (tableau des scores)
 - [ ] Tester le responsive design avec Tailwind
 
 ---
