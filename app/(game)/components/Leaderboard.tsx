@@ -8,10 +8,18 @@ type Player = {
     avatar: string;
     score: number;
     fastestTime: string;
+    date: string;
 };
 
 type LeaderboardProps = {
-    players: Player[];
+    players: {
+        rank: number;
+        name: string;
+        avatar: string;
+        score: number;
+        fastestTime: string;
+        date: string;
+    }[];
 };
 
 export default function Leaderboard({ players }: LeaderboardProps) {
@@ -25,6 +33,7 @@ export default function Leaderboard({ players }: LeaderboardProps) {
                             <th className="px-4 py-3 text-left text-white text-sm font-medium leading-normal">Player</th>
                             <th className="px-4 py-3 text-left text-white text-sm font-medium leading-normal">Score</th>
                             <th className="px-4 py-3 text-left text-white text-sm font-medium leading-normal">Fastest Time</th>
+                            <th className="px-4 py-3 text-left text-white text-sm font-medium leading-normal"> Date</th>
                         </tr>
                     </thead>
 
@@ -66,6 +75,11 @@ export default function Leaderboard({ players }: LeaderboardProps) {
                                 {/* TIME */}
                                 <td className="h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">
                                     {player.fastestTime}
+                                </td>
+
+                                {/* Date */}
+                                <td className="h-[72px] px-4 py-2 text-[#9393c8] text-sm font-normal leading-normal">
+                                    {player.date}
                                 </td>
                             </tr>
                         ))}
