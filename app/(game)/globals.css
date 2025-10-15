@@ -25,7 +25,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-SpaceGrotesk);
 } */
- 
+
 @import "tailwindcss";
 
 /* 🌗 Thèmes clair/sombre */
@@ -74,16 +74,26 @@ a {
   @keyframes flip {
     0% {
       transform: rotateX(0deg);
+      opacity: 1;
     }
-    50% {
+
+    49% {
       transform: rotateX(-90deg);
+      opacity: 0;
     }
+
+    51% {
+      transform: rotateX(90deg);
+      opacity: 0;
+    }
+
     100% {
       transform: rotateX(0deg);
+      opacity: 1;
     }
   }
 
   .animate-flip {
-    animation: flip 0.6s ease-in-out;
+    animation: flip 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
   }
 }
