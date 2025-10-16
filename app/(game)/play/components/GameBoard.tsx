@@ -1,22 +1,15 @@
 import React from "react";
-
-type PegProps = { color?: string; isEmpty?: boolean; dashed?: boolean };
+import type { PegProps, FeedbackPegProps, GameBoardProps } from "@/types";
 
 function Peg({ color, isEmpty = false, dashed = false }: PegProps) {
     if (isEmpty) return <div className="w-10 h-10 rounded-full bg-gray-400"></div>;
     if (dashed) return <div className="w-10 h-10 rounded-full border-2 border-dashed border-gray-500"></div>;
-    return <div className={`w-10 h-10 rounded-full`} style={{ backgroundColor: color }}></div>;
+    return <div className={`w-10 h-10 rounded-full`} style={{ backgroundColor: color || "#6b7280" }}></div>;
 }
-
-type FeedbackPegProps = { color?: string };
 
 function FeedbackPeg({ color = "#6b7280" }: FeedbackPegProps) {
     return <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }}></div>;
 }
-
-export type GuessRow = { number: number; pegs: (string | null)[]; feedback?: string[] };
-
-type GameBoardProps = { guesses: GuessRow[] };
 
 export default function GameBoard({ guesses }: GameBoardProps) {
     return (
@@ -31,7 +24,7 @@ export default function GameBoard({ guesses }: GameBoardProps) {
                         <span className="text-lg font-bold">{row.number}</span>
                         <div className="flex gap-3">
                             {row.pegs.map((peg, i) => (
-                                <Peg key={i} color={peg ?? undefined} isEmpty={!peg} dashed={!peg} />
+                                <Peg key={i} color={peg?.color ?? null} isEmpty={!peg} dashed={!peg} />
                             ))}
                         </div>
                     </div>

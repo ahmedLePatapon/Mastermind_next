@@ -1,13 +1,6 @@
 import React from 'react'
+import type { PegProps } from '@/types'
 
-interface PegProps {
-    color: string | '#6b7280'
-    width?: number
-    height?: number
-    key: number
-    isEmpty?: boolean
-    dashed?: boolean
-}
 
 export default function Peg({ color, isEmpty = false, dashed = false, key, width = 10, height = 10 }: PegProps) {
     if (isEmpty) return <div className={`w-${width} h-${height} rounded-full bg-gray-400`}></div>;

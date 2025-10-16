@@ -1,22 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
+import { COULEURS, COULEURS_MAP } from "@/lib/variables";
 
 interface ColorSelectorProps {
     onSelectColor?: (color: string) => void;
 }
 
-const COLORS = [
-    "rgb(255, 0, 0)",      // rouge
-    "rgb(0, 0, 255)",      // bleu
-    "rgb(0, 255, 0)",      // vert
-    "rgb(255, 255, 0)",    // jaune
-    "rgb(128, 0, 128)",    // violet
-    "rgb(255, 165, 0)",    // orange
-];
+const COLORS = Object.values(COULEURS_MAP);
 
 export default function ColorSelector({ onSelectColor }: ColorSelectorProps) {
-    const [selectedColor, setSelectedColor] = useState<string>(COLORS[0]);
+    const [selectedColor, setSelectedColor] = useState<string>(COULEURS[0]);
 
     const handleColorChange = (color: string) => {
         setSelectedColor(color);
