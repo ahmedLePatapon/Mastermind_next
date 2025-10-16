@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import HeadingSection from '@/components/HeadingSection'
 import PegsDisplay from '@/components/PegsDisplay'
