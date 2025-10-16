@@ -66,6 +66,10 @@ a {
   @apply text-[#9393c8] hover:text-white transition-colors;
 }
 
+.bg-dark {
+  background-color: var(--background-dark);
+}
+
 @layer utilities {
   .perspective {
     perspective: 1000px;
