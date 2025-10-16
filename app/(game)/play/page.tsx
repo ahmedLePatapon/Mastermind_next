@@ -1,18 +1,29 @@
 "use client";
 
-import GameBoard, { GuessRow } from "./components/GameBoard";
+import { useEffect, useState } from "react";
+import GameBoard from "./components/GameBoard";
 import Timer from "./components/Timer";
 import ColorSelector from "./components/ColorSelector";
-import { useState } from "react";
+import type { GuessRow } from "@/types";
+import { GameLogic } from "@/lib/gamelogic";
 
 export default function GamePage() {
     const [selectedColor, setSelectedColor] = useState("#0000ff");
+    const [secretCombination, setSecretCombination] = useState<string[]>();
     const guesses: GuessRow[] = [
-        { number: 1, pegs: [null, null, null, null], feedback: [] },
-        { number: 2, pegs: ["#ff0000", "#0000ff", "#00ff00", "#ffff00"], feedback: ["#fff", "#000", "", ""] },
-        { number: 3, pegs: [null, null, null, null], feedback: [] },
-        { number: 4, pegs: [null, null, null, null], feedback: [] },
+        { number: 1, pegs: [{ key: 0, color: null }, { key: 1, color: null }, { key: 2, color: null }, { key: 3, color: null }], feedback: [] },
+        { number: 2, pegs: [{ key: 0, color: "#ff0000" }, { key: 1, color: "#0000ff" }, { key: 2, color: "#00ff00" }, { key: 3, color: "#ffff00" }], feedback: ["#fff", "#000", "", ""] },
+        { number: 3, pegs: [{ key: 0, color: null }, { key: 1, color: null }, { key: 2, color: null }, { key: 3, color: null }], feedback: [] },
+        { number: 4, pegs: [{ key: 0, color: null }, { key: 1, color: null }, { key: 2, color: null }, { key: 3, color: null }], feedback: [] },
     ];
+
+
+    useEffect(() => {
+        const gameLogic = new GameLogic();
+        const A = gameLogic.init;
+        console.log('A', A);
+    }, []);
+
 
     return (
         <main className="flex-grow p-5 lg:p-10">
