@@ -9,8 +9,10 @@ export default function ButtonGroup() {
                     Play Now
                 </button>
             </Link>
+
             <Link href={'/didacticiel'}>
-                <button className="h-12 w-full rounded-lg bg-primary/30 px-5 text-base font-bold text-white transition-transform duration-200 hover:scale-105">
+                <button
+                    className="h-12 w-full rounded-lg bg-primary/30 px-5 text-base font-bold text-white transition-transform duration-200 hover:scale-105">
                     How to Play
                 </button>
             </Link>
