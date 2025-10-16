@@ -16,7 +16,6 @@ export default function Timer() {
         setSeconds(0);
     }, [resetKey]);
 
-    // Logique du timer
     useEffect(() => {
         if (!isRunning) return;
 
@@ -28,9 +27,9 @@ export default function Timer() {
                     setTimeout(() => setFlipMin(false), 600);
                     return 0;
                 }
+                setFlipSec(true);
                 return prev + 1;
             });
-            setFlipSec(true);
             setTimeout(() => setFlipSec(false), 600);
         }, 1000);
 
@@ -58,7 +57,7 @@ function FlipUnit({
         <div className="flex grow basis-0 flex-col items-stretch gap-4">
             <div className="relative h-16 perspective">
                 <div
-                    className={`absolute inset-0 flex items-center justify-center rounded-lg bg-[#242447] text-white text-2xl font-bold leading-tight tracking-[-0.015em] transition-transform duration-500 ${flip ? "animate-flip" : ""
+                    className={`absolute inset-0 flex items-center justify-center rounded-lg bg-[#242447] text-white text-2xl font-bold transition-transform duration-500 [transform-style:preserve-3d] ${flip ? "animate-flip" : ""
                         }`}
                 >
                     {value.toString().padStart(2, "0")}
