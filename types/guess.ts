@@ -1,14 +1,11 @@
-import { PegProps } from "./peg"
+import { GameLogicType } from "./game";
 
 export interface GuessRow {
-    number: number
-    pegs: (PegProps)[]
-    feedback?: string[]
+    guess: (string | null)[];
+    result: string[] | null;
 }
 
-export interface GameBoardProps {
-    guesses: GuessRow[]
-};
+export interface GuessLine extends GuessRow { }
 
 export interface HintResult {
     hintNoir: number;
