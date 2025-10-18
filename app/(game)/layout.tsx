@@ -1,11 +1,13 @@
+import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
+
 import Header from "./play/components/Header";
 import GameClientWrapper from "./play/GameClientWrapper";
+import Footer from "@/components/Footer";
 
 import "@/app/globals.css";
 import '@/app/globalicon.css';
 
-import { Space_Grotesk } from "next/font/google";
-import Footer from "@/components/Footer";
 
 // Import de la police côté serveur
 const spaceGrotesk = Space_Grotesk({
@@ -13,6 +15,12 @@ const spaceGrotesk = Space_Grotesk({
     variable: "--font-space",
     display: "swap",
 });
+
+export const metadata: Metadata = {
+    title: "Mastermind Game",
+    description: "A logic and deduction game built with Next.js + Tailwind CSS.",
+};
+
 export default function GameLayout({
     children,
 }: Readonly<{
