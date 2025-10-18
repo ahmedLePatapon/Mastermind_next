@@ -1,5 +1,5 @@
 import { COULEURS_MAP } from './variables';
-import type { HintResult } from '../types';
+import type { HintResult, PegProps } from '../types';
 
 export const shuffle = (o: Array<any>) => {
     for (let i = o.length - 1; i > 0; i--) {
@@ -13,6 +13,7 @@ export function compareArray(
     secret: string[],
     guess: string[]
 ): HintResult {
+
     let hintNoir: number = 0;
     let hintGrey: number = 0;
 
@@ -45,36 +46,69 @@ export function compareArray(
     return { hintNoir, hintGrey };
 }
 
-interface GameLogicType {
-    COULEURS_MAP: Object;
-    secretCombination: string[];
-    evaluateGuess: (guess: string[]) => { hintNoir: number; hintGrey: number };
-    generateSecretCombination: (length?: number) => string[];
-};
 
-export class GameLogic implements GameLogicType {
-    COULEURS_MAP: Object;
-    secretCombination: string[];
+export class GameLogic {
+    private secretCode: string[];
+    private attempts: number = 0;
+    maxAttempts: number = 20;
+    public COULEURS_MAP: Object
 
-    constructor() {
+    guesses: any[];
+
+    constructor(private couleursMap: Object = COULEURS_MAP, codeLength: number = 4, maxAttempts = 20) {
         this.COULEURS_MAP = COULEURS_MAP;
-        this.secretCombination = this.generateSecretCombination(4);
+        this.maxAttempts = maxAttempts;
+        this.secretCode = this.generateSecretCombination(codeLength);
+        this.guesses = [];
     }
 
-    generateSecretCombination(length: number = 4): string[] {
-        const colors = Object.keys(this.COULEURS_MAP);
+    private generateSecretCombination(length: number = 4): string[] {
+        const colors = Object.keys(this.couleursMap);
         const shuffledColors = shuffle(colors);
         return shuffledColors.slice(0, length);
     }
 
-    evaluateGuess(guess: string[]): { hintNoir: number; hintGrey: number } {
-        return compareArray(this.secretCombination, guess);
+    public checkGuess(guess: string[]): { hintNoir: number; hintGrey: number } | null {
+        if (guess.length !== this.secretCode.length) {
+            throw new Error("Guess length must match the secret code length.");
+        }
+
+        if (this.attempts >= this.maxAttempts) {
+            return null; // Partie terminée
+        }
+        this.attempts++;
+        return compareArray(this.secretCode, guess);
     }
 
-    init = () => {
-        this.secretCombination = this.generateSecretCombination(4);
+    isWin(result: HintResult): boolean {
+        return result.hintNoir === this.secretCode.length;
     }
-    get = () => {
-        return this.secretCombination;
+
+    isGameOver(): boolean {
+        return this.attempts >= this.maxAttempts;
+    }
+
+    public getAttemptsLeft(): number {
+        return this.maxAttempts - this.attempts;
+    }
+    public revealCode(): string[] {
+        return [...this.secretCode];
+    }
+    getStatus(guess: string[]): "win" | "lose" | { hintNoir: number; hintGrey: number } {
+        let guessChecked = this.checkGuess(guess) || { hintNoir: 0, hintGrey: 0 };
+
+        if (this.isWin(guessChecked)) {
+            return "win";
+        } else if (this.isGameOver()) {
+            return "lose";
+        } else {
+            return guessChecked;
+        }
+    }
+
+    logSecretCombination() {
+        console.log('**********************');
+        console.log("Secret Combination:", this.secretCode);
+        console.log('**********************');
     }
 };
