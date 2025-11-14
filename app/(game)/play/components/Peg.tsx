@@ -8,8 +8,10 @@ export default function Peg({
     isEmpty = false,
     dashed = false,
     shouldReset = false,
-    onColorChange
-}: PegProps & { shouldReset: boolean; onColorChange: (color: string) => void }) {
+    isSelected,
+    onColorChange,
+    onClick,
+}: PegProps & { shouldReset: boolean; onColorChange: (color: string) => void; onClick: () => void }) {
     const COLORS = Object.values(COULEURS_MAP);
     const [currentColorIndex, setCurrentColorIndex] = useState<number>(
         color ? COLORS.indexOf(color) : 0
@@ -54,18 +56,21 @@ export default function Peg({
     if (!isActive) {
         return (
             <div
-                className="w-10 h-10 rounded-full bg-gray-400 transition-colors cursor-pointer"
+                className={`w-10 h-10 rounded-full bg-gray-400 transition-colors cursor-pointer ${isSelected ? `border-[3px] border-[#111122] ring-3` : ""}`}
                 onWheel={handleMouseWheel}
+                onClick={onClick}
             ></div>
         );
     }
 
     return (
         <div
-            className="w-10 h-10 rounded-full transition-colors cursor-pointer"
+            className={`w-10 h-10 rounded-full transition-colors cursor-pointer ${isSelected ? `border-[3px] border-[#111122] ring-3` : ""}`
+            }
             style={{ backgroundColor: displayColor }}
             onWheel={handleMouseWheel}
+            onClick={onClick}
         >
-        </div>
+        </div >
     );
 }
