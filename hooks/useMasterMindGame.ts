@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { GameLogic } from "@/lib/gamelogic";
-import type { GameBoardProps, GuessLine, HintResult } from "@/types";
+import type { GameBoardProps, GuessLine, GuessRow, HintResult } from "@/types";
 
 
 
@@ -8,14 +8,15 @@ export const useMasterMindGame = (codeLength = 4, maxAttempts = 10): GameBoardPr
     const [game, setGame] = useState(() => new GameLogic(codeLength, maxAttempts));
     const [lines, setLines] = useState<GuessLine[]>([]);
     const [status, setStatus] = useState<"playing" | "won" | "lost">("playing");
+
+    const DEFAULT_LINES: GuessLine = { guess: ["#6b7280", "#6b7280", "#6b7280", "#6b7280"], result: { hintNoir: 0, hintGrey: 0 } };
     const initLines = () => {
-        return [{ guess: ["#6b7280", "#6b7280", "#6b7280", "#6b7280"], result: { hintNoir: 0, hintGrey: 0 } }];
+        return [DEFAULT_LINES];
     };
 
     useMemo(() => {
         setLines(initLines());
     }, []);
-
 
     const submitGuess = (guess: string[]) => {
         if (status !== "playing") return;
