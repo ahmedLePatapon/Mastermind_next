@@ -49,6 +49,7 @@ export function compareArray(
 
 export class GameLogic {
     private secretCode: string[];
+    private gamesCounted: number = 0;
     private attempts: number = 0;
     maxAttempts: number = 20;
     public COULEURS_MAP: Object
@@ -80,7 +81,8 @@ export class GameLogic {
         return compareArray(this.secretCode, guess);
     }
 
-    isWin(result: HintResult): boolean {
+    isWin(result: HintResult, gamesCounted: number): boolean {
+        gamesCounted++;
         return result.hintNoir === this.secretCode.length;
     }
 
@@ -94,16 +96,21 @@ export class GameLogic {
     public revealCode(): string[] {
         return [...this.secretCode];
     }
+
     getStatus(guess: string[]): "win" | "lose" | { hintNoir: number; hintGrey: number } {
         let guessChecked = this.checkGuess(guess) || { hintNoir: 0, hintGrey: 0 };
 
-        if (this.isWin(guessChecked)) {
+        if (this.isWin(guessChecked, this.gamesCounted)) {
             return "win";
         } else if (this.isGameOver()) {
             return "lose";
         } else {
             return guessChecked;
         }
+    }
+
+    gameCount(): number {
+        return this.gamesCounted;
     }
 
     logSecretCombination() {
